@@ -5,7 +5,7 @@ services:
     build: .
     container_name: employees
     restart: always
-    command: bash -c "python manage.py migrate && python manage.py collectstatic --no-input --clear && python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "python src/manage.py migrate && python src/manage.py collectstatic --no-input --clear && python src/manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:

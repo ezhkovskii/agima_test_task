@@ -7,6 +7,6 @@ RUN mkdir /code/staticfiles
 WORKDIR /code
 
 ADD . /code/
+RUN apk update && apk add bash && apk add build-base
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN apk update && apk add bash

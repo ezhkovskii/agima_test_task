@@ -42,5 +42,6 @@
 - Админка по модели данных
 
 # Установка
-docker-compose up --build      
-Создать юзера с помощью createsuperuser
+- Переименовать .env_example в .env
+- docker-compose up --build      
+- Создать юзера: docker exec -it <container_id> python manage.py createsuperuser 

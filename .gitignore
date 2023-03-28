@@ -173,8 +173,8 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
 
-db.sqlite3
+src/db.sqlite3
 /photos_employees
-/staticfiles
+/src/staticfiles
 
 .idea

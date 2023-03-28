@@ -1,20 +1,10 @@
 from django.db import models
 
 
-class DirectorException(Exception):
-    ...
-
-
 class Department(models.Model):
     name = models.CharField(max_length=255, verbose_name='Название')
     director = models.ForeignKey("Employee", on_delete=models.SET_NULL, related_name='head', null=True, blank=True,
-                                 verbose_name='Директор')
-
-    def save(self, *args, **kwargs):
-        emp = Employee.objects.get(id=self.director.id)
-        if self.id != emp.department_id:
-            raise DirectorException('Нельзя выбрать директором сотрудника из другого отдела')
-        super().save(*args, **kwargs)
+                                 verbose_name='Директор', unique=True)
 
     def __str__(self):
         return f'{self.name}'

@@ -4,7 +4,6 @@ chardet==4.0.0
 coreapi==2.3.3
 coreschema==0.0.4
 Django==4.1.7
-django-dotenv==1.4.2
 django-filter==22.1
 django_debug_toolbar==3.8.1
 djangorestframework==3.14.0
@@ -17,9 +16,11 @@ Jinja2==3.1.2
 MarkupSafe==2.1.2
 packaging==23.0
 Pillow==9.4.0
+python-dotenv==1.0.0
 pytz==2022.7.1
 requests==2.25.1
 ruamel.yaml==0.17.21
+ruamel.yaml.clib==0.2.7
 sqlparse==0.4.3
 tzdata==2022.7
 uritemplate==4.1.1
