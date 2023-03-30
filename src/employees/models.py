@@ -22,7 +22,7 @@ class Employee(models.Model):
     position = models.CharField(max_length=255, verbose_name='Должность')
     salary = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Оклад')
     age = models.PositiveSmallIntegerField(verbose_name='Возраст')
-    department = models.ForeignKey(Department, on_delete=models.PROTECT, verbose_name='Отдел')
+    department = models.ForeignKey(Department, on_delete=models.PROTECT, verbose_name='Отдел', related_name='employees')
 
     def __str__(self):
         return f'{self.surname} {self.name} {self.patronymic}' if self.patronymic else f'{self.surname} {self.name}'

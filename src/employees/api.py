@@ -1,3 +1,5 @@
+import logging
+
 from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -25,9 +27,12 @@ class EmployeeViewSet(viewsets.ModelViewSet):
 
 
 class DepartmentViewSet(viewsets.ModelViewSet):
-    queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        self.queryset = Department.objects.prefetch_related('employees').all()
+        return self.queryset
 
     def retrieve(self, request, *args, **kwargs):
         response = super().retrieve(request, *args, **kwargs)
@@ -41,9 +46,8 @@ class DepartmentViewSet(viewsets.ModelViewSet):
         response = super().list(request, *args, **kwargs)
         department_ids = [dep.get('id') for dep in response.data]
         counters = get_counters_department(department_ids)
-        if counters:
-            for resp in response.data:
-                add_counters_to_response(counters, resp)
+        for resp in response.data:
+            add_counters_to_response(counters, resp)
 
         return response
 
